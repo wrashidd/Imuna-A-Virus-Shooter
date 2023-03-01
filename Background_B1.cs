@@ -10,10 +10,6 @@ public class Background_B1 : MonoBehaviour
     public Renderer bgRend;
     private bool stopBG = false;
 
-
-
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -26,18 +22,13 @@ public class Background_B1 : MonoBehaviour
         if (stopBG == false)
         {
             bgRend.material.mainTextureOffset += new Vector2(0f, _speed * Time.deltaTime * _speedM);
-
         }
 
         if (stopBG == true)
         {
             bgRend.material.mainTextureOffset += new Vector2(0f, 0.001f * Time.deltaTime);
         }
-
-
     }
-
-
 
     public void StopBGmovement()
     {

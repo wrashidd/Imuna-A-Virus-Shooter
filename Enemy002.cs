@@ -5,19 +5,13 @@ using UnityEngine;
 
 public class Enemy002 : MonoBehaviour
 {
-    
     private float _speed = 4.0f;
+
     [SerializeField]
     private GameObject AccessSpawn_Manager;
 
-
-  
- 
     private Player _player;
     private UIManager _uiManager;
-
-    
-
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +23,7 @@ public class Enemy002 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // move down at 4 min/s  
+        // move down at 4 min/s
         //if reach bottom respawn at top with a new random x position
 
         transform.Translate(Vector3.down * _speed * Time.deltaTime);
@@ -44,7 +38,6 @@ public class Enemy002 : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-
         if (other.tag == "Player")
         {
             if (_player != null)
@@ -52,9 +45,7 @@ public class Enemy002 : MonoBehaviour
                 _player.Damage();
                 Destroy(this.gameObject);
             }
-
         }
-
 
         if (other.tag == "Laser" || other.tag == "TripleShot")
         {
@@ -65,7 +56,6 @@ public class Enemy002 : MonoBehaviour
                 _player.PowerAdd(Random.Range(2, 4));
                 Destroy(this.gameObject);
             }
-
         }
 
         if (other.tag == "bulletOval")
@@ -73,15 +63,13 @@ public class Enemy002 : MonoBehaviour
             Destroy(this.gameObject);
             if (_player != null)
             {
-                _player.PowerAdd(Random.Range(2, 4));  
+                _player.PowerAdd(Random.Range(2, 4));
             }
         }
-
 
         if (other.tag == "Pass Border")
         {
             _uiManager.handleborderPass();
-
         }
 
         if (other.tag == "Shield_Powerup")
@@ -91,7 +79,6 @@ public class Enemy002 : MonoBehaviour
 
         if (other.tag == "Invisible")
         {
-
             Debug.Log("Invisible Tag Detected");
         }
     }

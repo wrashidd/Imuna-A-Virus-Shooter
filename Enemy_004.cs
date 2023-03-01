@@ -4,12 +4,7 @@ using UnityEngine;
 
 public class Enemy_004 : MonoBehaviour
 {
-
-
     private float _speed = 0.45f;
-
-
-
 
     private Player _player;
     private UIManager _uiManager;
@@ -24,14 +19,8 @@ public class Enemy_004 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-
         transform.Translate(Vector3.down * _speed * Time.deltaTime);
-
-    
     }
-
-
 
     IEnumerator EnemyN1DeathRoutine()
     {
@@ -44,7 +33,6 @@ public class Enemy_004 : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-
         if (other.tag == "Player")
         {
             if (_player != null)
@@ -52,9 +40,7 @@ public class Enemy_004 : MonoBehaviour
                 _player.Damage();
                 StartCoroutine(EnemyN1DeathRoutine());
             }
-
         }
-
 
         if (other.tag == "Laser" || other.tag == "TripleShot")
         {
@@ -65,7 +51,6 @@ public class Enemy_004 : MonoBehaviour
                 _player.PowerAdd(Random.Range(2, 4));
                 StartCoroutine(EnemyN1DeathRoutine());
             }
-
         }
 
         if (other.tag == "bulletOval")
@@ -80,7 +65,6 @@ public class Enemy_004 : MonoBehaviour
         if (other.tag == "Pass Border")
         {
             _uiManager.handleborderPass();
-
         }
 
         if (other.tag == "Shield_Powerup")
@@ -90,7 +74,6 @@ public class Enemy_004 : MonoBehaviour
 
         if (other.tag == "Invisible")
         {
-
             Debug.Log("Invisible Tag Detected");
         }
     }

@@ -4,17 +4,9 @@ using UnityEngine;
 
 public class bulletOval : MonoBehaviour
 {
-    
     private float _speed = 18.0f;
 
-
-
-
-
-    private void Start()
-    {
-
-    }
+    private void Start() { }
 
     // Update is called once per frame
     void Update()
@@ -31,7 +23,12 @@ public class bulletOval : MonoBehaviour
         yield return new WaitForSeconds(0.05f);
         transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
 
-        if (transform.position.y >= 7f || transform.position.y <= -7f || transform.position.x >= 12f || transform.position.x <= -12f)
+        if (
+            transform.position.y >= 7f
+            || transform.position.y <= -7f
+            || transform.position.x >= 12f
+            || transform.position.x <= -12f
+        )
         {
             if (transform.parent != null)
             {

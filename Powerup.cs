@@ -4,19 +4,14 @@ using UnityEngine;
 
 public class Powerup : MonoBehaviour
 {
-
     [SerializeField]
     private float _speed = 2.0f;
 
     [SerializeField]
-    private int powerupID; // 0 = Triple Shot, 1 = Speed, 2 = Shields 
-    
+    private int powerupID; // 0 = Triple Shot, 1 = Speed, 2 = Shields
 
     // Start is called before the first frame update
-    void Start()
-    {
-      
-    }
+    void Start() { }
 
     // Update is called once per frame
     void Update()
@@ -27,12 +22,7 @@ public class Powerup : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-
-
     }
-
-
-
 
     private void OnTriggerEnter(Collider other)
     {
@@ -46,12 +36,11 @@ public class Powerup : MonoBehaviour
                     case 0:
                         player.TripleShotActive();
                         break;
-                    
+
                     case 1:
                         player.bulletSuperActivate();
                         Debug.Log("Fire Super Collected");
                         break;
-
 
                     case 2:
                         player.ShieldPlayerActivator();
@@ -61,19 +50,10 @@ public class Powerup : MonoBehaviour
                     default:
                         Debug.Log("Powerup Script Switch is defaulted");
                         break;
-
                 }
-
             }
 
-            
-
             Destroy(this.gameObject);
-
         }
-
-
-
     }
 }
-       

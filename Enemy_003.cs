@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Enemy_003 : MonoBehaviour
 {
-    
     private float _speed = 0.5f;
     private int enemy003Life = 100;
 
@@ -12,10 +11,7 @@ public class Enemy_003 : MonoBehaviour
     Color enemy003DamageColor = new Color(1, 1, 1);
     Color startColor = Color.white;
     Color endColor = Color.black;
-    
 
-  
-  
     private Player _player;
     private UIManager _uiManager;
     private SpawnManager _spawnManager;
@@ -26,32 +22,28 @@ public class Enemy_003 : MonoBehaviour
         _player = GameObject.Find("Player").GetComponent<Player>();
         _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
         _spawnManager = GameObject.Find("Spawn_Manager").GetComponent<SpawnManager>();
-      
     }
 
     // Update is called once per frame
     void Update()
     {
-
-
         transform.Translate(Vector3.down * _speed * Time.deltaTime);
-       // transform.Rotate(0f, 0.1f, 0f,  Space.World);
-       // this.transform.RotateAround(new Vector3(0f, 0f, 0f), new Vector3(0f, 0f, 1f), 90f * Time.deltaTime);
-       
+        // transform.Rotate(0f, 0.1f, 0f,  Space.World);
+        // this.transform.RotateAround(new Vector3(0f, 0f, 0f), new Vector3(0f, 0f, 1f), 90f * Time.deltaTime);
+
 
         if (transform.position.y < -30f)
         {
-
             float randomX = Random.Range(-8.5f, 8.5f);
             transform.position = new Vector3(randomX, 30, 0);
-           
+
             //transform.localScale = Vector3.one * Random.Range(0.12f, 0.25f);
         }
     }
 
     private void ondamageColorChange()
-    {    
-            StartCoroutine(ondamageColorChangeRoutine());    
+    {
+        StartCoroutine(ondamageColorChangeRoutine());
     }
 
     IEnumerator ondamageColorChangeRoutine()
@@ -77,10 +69,8 @@ public class Enemy_003 : MonoBehaviour
             yield return new WaitForSeconds(2.95f);
             Destroy(this.gameObject);
             _spawnManager.enemy003Dead = true;
-
         }
     }
-
 
     private void OnTriggerEnter(Collider other)
     {
@@ -93,18 +83,12 @@ public class Enemy_003 : MonoBehaviour
             ondamageColorChange();
         }
 
-
-
-        
-
         if (other.tag == "bulletOval")
         {
             Destroy(other.gameObject);
 
             if (_player != null)
             {
-
-               
                 enemy003Life = enemy003Life - 15;
                 ondamageColorChange();
             }
@@ -112,7 +96,7 @@ public class Enemy_003 : MonoBehaviour
 
         if (other.tag == "Laser")
         {
-            Destroy(other.gameObject);   
+            Destroy(other.gameObject);
             enemy003Life = enemy003Life - Random.Range(1, 2);
             ondamageColorChange();
         }
@@ -124,22 +108,16 @@ public class Enemy_003 : MonoBehaviour
             ondamageColorChange();
         }
 
-
         if (other.tag == "Shield_Powerup")
         {
             enemy003Life = enemy003Life - 10;
             ondamageColorChange();
-
         }
 
         if (other.tag == "Invisible")
         {
-
             Debug.Log("Invisible Tag Detected");
         }
-        if (other.tag == "Pass Border")
-        {
-
-        }
+        if (other.tag == "Pass Border") { }
     }
 }
