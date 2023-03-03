@@ -1,6 +1,10 @@
 ﻿using System.Collections;
 using UnityEngine;
 
+/*
+This class is resposible for Enemy 003 behaviour
+Version 2d
+*/
 public class Enemy_003_2D : MonoBehaviour
 {
     private float _speed = 0.5f;
@@ -23,6 +27,8 @@ public class Enemy_003_2D : MonoBehaviour
     private int shotID;
 
     // Start is called before the first frame update
+    // Accesses Player game object
+    // Accesses Canvas and Spawn Manager Utility classes
     void Start()
     {
         _player = GameObject.Find("Player").GetComponent<Player>();
@@ -31,28 +37,20 @@ public class Enemy_003_2D : MonoBehaviour
     }
 
     // Update is called once per frame
+    // Handles Enemy 003 2D movement and rotation
     void Update()
     {
         transform.Translate(Vector3.down * _speed * Time.deltaTime, Space.World);
-
         transform.Rotate(0f, 0f, 0.01f, Space.World);
-        // this.transform.RotateAround(new Vector3(0f, 0f, 0f), new Vector3(0f, 0f, 1f), 90f * Time.deltaTime);
-
 
         if (transform.position.y < -30f)
         {
             float randomX = Random.Range(-8.5f, 8.5f);
             transform.position = new Vector3(randomX, 30, 0);
-
-            //transform.localScale = Vector3.one * Random.Range(0.12f, 0.25f);
         }
     }
 
-    /* private void ondamageColorChange()
-     {
-             StartCoroutine(ondamageColorChangeRoutine());
-     } */
-
+    // Runs color change on damage routine and destruction sequence
     IEnumerator ondamageColorChangeRoutine()
     {
         if (enemy003Life > 0)
@@ -64,27 +62,21 @@ public class Enemy_003_2D : MonoBehaviour
         }
         else
         {
-            //gameObject.GetComponent<Transform>().GetChild(0).GetComponent<Renderer>().gameObject.SetActive(false);
-
             gameObject.GetComponent<Transform>().GetChild(0).gameObject.SetActive(false);
             gameObject.GetComponent<Transform>().GetChild(1).gameObject.SetActive(false);
             shotID = 3;
             DamageParticlePFX();
             gameObject.GetComponent<Transform>().GetChild(2).gameObject.SetActive(true);
-
             gameObject.GetComponent<Transform>().GetComponent<CapsuleCollider>().enabled = false;
 
             yield return new WaitForSeconds(2.95f);
-            //Destroy(GameObject.Find("Enemy_003_2D_PFX" + "(Clone)"));
-
             Destroy(this.gameObject);
-
             _player.PowerAdd(20);
-
             _spawnManager.enemy003Dead = true;
         }
     }
 
+    // Instantiates one of the 4 types of Particle Effects
     private void DamageParticlePFX()
     {
         switch (shotID)
@@ -118,19 +110,12 @@ public class Enemy_003_2D : MonoBehaviour
                 );
                 break;
             default:
-                print("Enemy_003: No damage you idiot!");
+                print("Enemy_003: No damage!");
                 break;
         }
     }
 
-    /*   private void damageParticalsCleaner()
-       {
-           GameObject[] damageParticles = GameObject.FindGameObjectsWithTag("Enemy_003PFX" + "(Clone)");
-           foreach (GameObject particle in damageParticles) ;
-           GameObject.Destroy(particle);
-       }
-   */
-
+    // Triggers damages according to game objects it interacts
     private void OnTriggerEnter(Collider other)
     {
         //Debug.Log("HIt: " + other.transform.name);

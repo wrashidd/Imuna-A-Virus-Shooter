@@ -2,18 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+This class is resposible for Oval super bullet actions
+*/
 public class bulletOval : MonoBehaviour
 {
     private float _speed = 18.0f;
 
-    private void Start() { }
 
     // Update is called once per frame
+    // Runs bullets shoot and scale up coroutine
     void Update()
     {
         StartCoroutine(shotScalorRoutine());
     }
 
+     // Triggers bullet rescaling and its destruction sequence
     IEnumerator shotScalorRoutine()
     {
         transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);

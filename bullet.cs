@@ -2,20 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+This class is resposible for default bullet actions
+*/
 public class bullet : MonoBehaviour
 {
     private float _speed = 20f;
 
     Color emissionColorMagenta = new Color(0.307f, 0.019f, 1.0f);
 
-    private void Start() { }
-
     // Update is called once per frame
+    // Runs bullets shoot and scale up coroutine
     void Update()
     {
         StartCoroutine(shotScalorRoutine());
     }
 
+    // Triggers bullet rescaling and its destruction
     IEnumerator shotScalorRoutine()
     {
         transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);

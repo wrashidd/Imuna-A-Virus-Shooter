@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+This class is resposible for animating the first level's background
+Version #1
+*/
 public class Background_B1 : MonoBehaviour
 {
     private float _speed = 0.17f;
@@ -11,12 +15,15 @@ public class Background_B1 : MonoBehaviour
     private bool stopBG = false;
 
     // Start is called before the first frame update
+    // On start transforms the blood vessel mesh
+    // to its default position
     void Start()
     {
         transform.position = new Vector3(0, 2, 27);
     }
 
     // Update is called once per frame
+    // Handles playing and stopping texture movement animation
     void Update()
     {
         if (stopBG == false)
@@ -30,6 +37,7 @@ public class Background_B1 : MonoBehaviour
         }
     }
 
+    // Sets stopBG boolean to true
     public void StopBGmovement()
     {
         stopBG = true;
