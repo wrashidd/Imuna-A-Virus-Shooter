@@ -14,7 +14,11 @@ In the summer of 2020, during the COVID-19 pandemic, I embarked on a project to 
 ## Design ##
 
 ### Frutti Virus creation process
+###
+###
 
+![enemyone_process_modeling_low](https://user-images.githubusercontent.com/35751462/222880544-cbea8100-7490-4161-8d3e-7f46b4fd9a3b.gif)
 ### Microb V1 creation process
 
+![enemyone_process_animation_low](https://user-images.githubusercontent.com/35751462/222880634-b39bbf94-7123-428b-bcaf-5cc6c1097c15.gif)
 ### Microb V1 Animation process
