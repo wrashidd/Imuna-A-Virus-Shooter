@@ -10,4 +10,11 @@ In the summer of 2020, during the COVID-19 pandemic, I embarked on a project to 
 - Prioritize on destroying most harmful enemies first. 
 - Collect Bullets and Protective Shields
 - Defeate bosses in the end of each level.
-Play the game here: https://rashidd.net/imuna.html
+
+## Design ##
+
+### Frutti Virus creation process
+
+### Microb V1 creation process
+
+### Microb V1 Animation process
